@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<h1>Página de Cadastro</h1>
+
+<form action="{{ url_for('register') }}" method="POST">
+    <label for="nome">Nome completo</label>
+    <input type="text" name="nome" /> <br/>
+    <label for="email">E-mail</label>
+    <input type="email" name="email" /> <br/>
+    <label for="senha">Senha</label>
+    <input type="password" name="senha" /> <br/>
+    <label for="confsenha">Confirmar senha</label>
+    <input type="password" name="confsenha" /> <br/>
+    <input type="submit" value="Cadastrar">
+</form>
+
+{% endblock %}
