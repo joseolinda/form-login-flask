@@ -7,6 +7,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/logout')
+def logout():
+    return redirect(url_for('index'))
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -21,12 +25,12 @@ def login():
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    if request.method == "POST":
-        erro = request.args.get("erro")
+    erro = request.args.get("erro")
+    if erro != "":
         data = request.form
         return render_template('cadastrar.html', erro=erro, form=data)        
     
-    return render_template('cadastrar.html', form=None)        
+    return render_template('cadastrar.html', erro=None, form=None)        
         
 @app.route('/register', methods=['POST'])
 def register():

@@ -4,17 +4,17 @@
 <h1>Página de Cadastro</h1>
 
 {% if erro is not none %}
-<p style="padding: 24px; color: #fff; font-size:1.5em; background: red; border: thin solid #000">
+<p class="error">
     {{ erro }}
 </p>
 {% endif %}
 
 {% if form is not none %}
-{% set form_nome = form["nome"] %}
-{% set form_mail = form["email"] %}
+    {% set form_nome = form["nome"] %}
+    {% set form_mail = form["email"] %}
 {% else %}
-{% set form_nome = "" %}
-{% set form_mail = "" %}
+    {% set form_nome = "" %}
+    {% set form_mail = "" %}
 {% endif %}
 
 <form action="{{ url_for('register') }}" method="POST">
