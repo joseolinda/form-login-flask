@@ -10,5 +10,4 @@ def valida_cadastro(nome, email, senha, confsenha):
     elif senha != confsenha:
         return 'As senhas não conferem'
     else:
-        return f'Nome: {nome} <br> E-mail: {email} <br> Senha: {senha} \
-            <br>Confirmação de senha: {confsenha}'
+        return None

@@ -19,9 +19,14 @@ def login():
     else:
         return render_template('login.html')
 
-@app.route('/signup')
+@app.route('/signup', methods=["GET", "POST"])
 def signup():
-    return render_template('cadastrar.html')
+    if request.method == "POST":
+        erro = request.args.get("erro")
+        data = request.form
+        return render_template('cadastrar.html', erro=erro, form=data)        
+    
+    return render_template('cadastrar.html', form=None)        
         
 @app.route('/register', methods=['POST'])
 def register():
@@ -31,8 +36,10 @@ def register():
     confsenha = request.form['confsenha']
     
     msg = valida_cadastro(nome, email, senha, confsenha)
-    
-    return redirect(url_for('login'))
+    if msg is None:
+       return redirect(url_for('login')) 
+       
+    return redirect(url_for('signup', erro=msg))
 
 @app.route('/admin')
 def admin():
